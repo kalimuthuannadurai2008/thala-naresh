@@ -1,0 +1,323 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+  .nb-wrap {
+    max-width: 640px;
+    margin: 1.5rem auto;
+    font-family: 'Libre Baskerville', serif;
+  }
+
+  .nb-cover {
+    background: #1a3a2a;
+    border-radius: 4px 12px 12px 4px;
+    padding: 2rem 2.5rem 1.5rem;
+    position: relative;
+    box-shadow: inset -4px 0 8px rgba(0,0,0,0.3), inset 4px 0 0 #0d2018;
+    border-left: 18px solid #0d2018;
+  }
+
+  .nb-cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 27px,
+      rgba(255,255,255,0.04) 27px,
+      rgba(255,255,255,0.04) 28px
+    );
+    border-radius: 0 12px 12px 0;
+    pointer-events: none;
+  }
+
+  .nb-label {
+    background: #f5e6c0;
+    border-radius: 6px;
+    padding: 1.2rem 1.5rem 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    border: 1px solid #c8a96e;
+    position: relative;
+  }
+
+  .nb-label::after {
+    content: '';
+    position: absolute;
+    top: -8px; left: 50%; transform: translateX(-50%);
+    width: 40px; height: 10px;
+    background: rgba(200,169,110,0.6);
+    border-radius: 3px;
+  }
+
+  .school-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #5a3a0a;
+    text-align: center;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    border-bottom: 1.5px solid #c8a96e;
+    padding-bottom: 6px;
+  }
+
+  .subject-title {
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c1a06;
+    text-align: center;
+    margin: 8px 0 4px;
+    line-height: 1;
+  }
+
+  .index-label {
+    font-size: 11px;
+    color: #7a5a2a;
+    text-align: center;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .info-field {
+    background: transparent;
+    border-bottom: 1.5px solid #c8a96e;
+    padding: 4px 0;
+  }
+
+  .info-field label {
+    font-size: 9px;
+    color: #8a6a3a;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .info-field input {
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    color: #2c1a06;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0;
+    font-weight: 600;
+  }
+
+  .info-field input::placeholder {
+    color: #c8a96e;
+    font-weight: 400;
+  }
+
+  .nb-page {
+    background: #fffdf4;
+    border-radius: 0 4px 4px 0;
+    padding: 1.5rem 2rem 2rem;
+    position: relative;
+    border-left: 3px solid #e8c87a;
+    margin-top: 0;
+  }
+
+  .nb-page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 52px; bottom: 0; width: 1px;
+    background: rgba(220,160,160,0.5);
+  }
+
+  .page-title {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    color: #2c4a6e;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: #2c4a6e88;
+  }
+
+  .index-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .index-table th {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #7a5a2a;
+    border-bottom: 2px solid #c8a96e;
+    padding: 6px 8px;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .index-table th:first-child {
+    padding-left: 0;
+    width: 36px;
+    text-align: center;
+  }
+
+  .index-table td {
+    border-bottom: 1px solid #e8d8b0;
+    padding: 0;
+    vertical-align: bottom;
+  }
+
+  .index-table td input {
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    color: #1a2a3a;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 7px 8px 5px;
+    font-weight: 400;
+  }
+
+  .index-table td input::placeholder {
+    color: #ccc;
+  }
+
+  .index-table td:first-child input {
+    text-align: center;
+    font-weight: 600;
+    color: #8a6a3a;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row-num {
+    font-family: 'Caveat', cursive;
+    font-size: 13px;
+    color: #aaa;
+    text-align: center;
+    padding: 7px 0 5px;
+    user-select: none;
+  }
+
+  .add-row-btn {
+    margin-top: 1rem;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    color: #2c4a6e;
+    background: transparent;
+    border: 1px dashed #2c4a6e88;
+    border-radius: 4px;
+    padding: 6px 16px;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    display: block;
+    width: 100%;
+    transition: background 0.15s;
+  }
+
+  .add-row-btn:hover {
+    background: #2c4a6e0d;
+  }
+
+  .spiral {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    padding: 6px 0;
+    background: #222;
+  }
+
+  .spiral-ring {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid #888;
+    background: #111;
+    box-shadow: inset 0 1px 3px rgba(255,255,255,0.15);
+  }
+</style>
+
+<h2 class="sr-only">Notebook index page with student name, subject, school, and roll number fields, plus an editable table of contents.</h2>
+
+<div class="nb-wrap">
+  <div class="spiral">
+    <div class="spiral-ring"></div><div class="spiral-ring"></div><div class="spiral-ring"></div>
+    <div class="spiral-ring"></div><div class="spiral-ring"></div><div class="spiral-ring"></div>
+    <div class="spiral-ring"></div><div class="spiral-ring"></div><div class="spiral-ring"></div>
+    <div class="spiral-ring"></div><div class="spiral-ring"></div><div class="spiral-ring"></div>
+  </div>
+
+  <div class="nb-cover">
+    <div class="nb-label">
+      <div class="school-name">School / College Name</div>
+      <div class="subject-title">Index</div>
+      <div class="index-label">Academic Notebook</div>
+      <div class="info-grid">
+        <div class="info-field">
+          <label>Student Name</label>
+          <input type="text" placeholder="Your name here" />
+        </div>
+        <div class="info-field">
+          <label>Roll No.</label>
+          <input type="text" placeholder="e.g. 42" />
+        </div>
+        <div class="info-field">
+          <label>Subject</label>
+          <input type="text" placeholder="e.g. Mathematics" />
+        </div>
+        <div class="info-field">
+          <label>Class / Year</label>
+          <input type="text" placeholder="e.g. Class 10-B" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nb-page">
+    <div class="page-title">Index</div>
+    <table class="index-table" id="indexTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Topic / Chapter</th>
+          <th style="width:80px">Page No.</th>
+          <th style="width:90px">Date</th>
+        </tr>
+      </thead>
+      <tbody id="indexBody">
+      </tbody>
+    </table>
+    <button class="add-row-btn" onclick="addRow()">+ Add row</button>
+  </div>
+</div>
+
+<script>
+let rowCount = 0;
+
+function addRow() {
+  rowCount++;
+  const tbody = document.getElementById('indexBody');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><div class="row-num">${rowCount}</div></td>
+    <td><input type="text" placeholder="Topic or chapter title" /></td>
+    <td><input type="text" placeholder="—" /></td>
+    <td><input type="text" placeholder="dd/mm/yy" /></td>
+  `;
+  tbody.appendChild(tr);
+}
+
+for (let i = 0; i < 8; i++) addRow();
+</script>
